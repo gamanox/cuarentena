@@ -23,6 +23,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="static/icons/apple-touch-icon.png">
   <link rel="icon" href="static/icons/favicon.png">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="manifest" href="/manifest.json">
   
   <!-- built styles file will be auto injected -->
@@ -31,5 +32,16 @@
   <div id="app"></div>
   
   <!-- built script files will be auto injected -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
